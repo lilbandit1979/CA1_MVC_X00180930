@@ -1,4 +1,5 @@
 ﻿using CA1_MVC_X00180930.Models;
+using CA1_MVC_X00180930.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,12 +7,20 @@ namespace CA1_MVC_X00180930.Controllers
 {
     public class PackageController : Controller
     { 
-    public static List<Package> _packages = new List<Package>()
+     static List<Package> _packages = new List<Package>()
     {
         //new Package{ID=1,ClientName="Bob",ShippingAddress="Newbridge",Weight=2.0,Length=20.0,Width=10.0,Height=40.0 }
     }; //static list of Package
-    
+
         // GET: PackageController
+
+        IRepository _repo;
+
+        public PackageController(IRepository repo) //added for repo
+        {
+            _repo = repo;
+            
+        }
         public ActionResult Index()
         {
             return View(_packages); //repo not set up yet
@@ -38,8 +47,8 @@ namespace CA1_MVC_X00180930.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _packages.Add(p);
-                    //_repo.Create(f);
+                    //_packages.Add(p);
+                    _repo.CreatePackage(p); //add using repo
                     return RedirectToAction(nameof(Index));
                 }
                 return View(p);
@@ -54,7 +63,7 @@ namespace CA1_MVC_X00180930.Controllers
         // GET: PackageController/Edit/5
         public ActionResult Edit(int id)
         {
-            var package = _packages.FirstOrDefault(p => p.ID == id);
+            var package = _repo.GetPackage(id);
             return View(package);
         }
 
@@ -66,18 +75,17 @@ namespace CA1_MVC_X00180930.Controllers
         {
             try
             {
-                var package = _packages.FirstOrDefault(f => f.ID == p.ID);
-                if (package != null)
-                {
-                    package.ClientName = p.ClientName;
-                    package.ShippingAddress = p.ShippingAddress;
-                    package.Weight = p.Weight;
-                    package.Length = p.Length;
-                    package.Width = p.Width;
-                    package.Height = p.Height;
-                }
-                //_repo.Edit(p); --> repo not set up yet
-
+                //var package = _packages.FirstOrDefault(f => f.ID == p.ID);
+                //if (package != null)
+                //{
+                //    package.ClientName = p.ClientName;
+                //    package.ShippingAddress = p.ShippingAddress;
+                //    package.Weight = p.Weight;
+                //    package.Length = p.Length;
+                //    package.Width = p.Width;
+                //    package.Height = p.Height;
+                //}
+                _repo.EditPackage(p);// for repo                          
                 return RedirectToAction(nameof(Index));
             }
             catch

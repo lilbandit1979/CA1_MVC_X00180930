@@ -31,7 +31,7 @@ namespace CA1_MVC_X00180930.Models
         [Display(Name = "Height: CM")]
         public double Height { get; set; }
         [Required]
-        public ShippingCategory ShippingCategory { get; set; }
+        public ShippingCategory ShippingCategory { get; set; } //object won't create 
         
         //[Required]
 
