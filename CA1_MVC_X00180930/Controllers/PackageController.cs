@@ -7,10 +7,10 @@ namespace CA1_MVC_X00180930.Controllers
 {
     public class PackageController : Controller
     { 
-     static List<Package> _packages = new List<Package>()
-    {
+     //static List<Package> _packages = new List<Package>()
+    
         //new Package{ID=1,ClientName="Bob",ShippingAddress="Newbridge",Weight=2.0,Length=20.0,Width=10.0,Height=40.0 }
-    }; //static list of Package
+     //static list of Package
 
         // GET: PackageController
 
@@ -23,7 +23,7 @@ namespace CA1_MVC_X00180930.Controllers
         }
         public ActionResult Index()
         {
-            return View(_packages); //repo not set up yet
+            return View(_repo.AllPackages()); 
         }
 
         // GET: PackageController/Details/5

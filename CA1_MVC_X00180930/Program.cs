@@ -1,7 +1,10 @@
+using CA1_MVC_X00180930.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IRepository, MockDB>(); //Add mockdb service
 
 var app = builder.Build();
 
