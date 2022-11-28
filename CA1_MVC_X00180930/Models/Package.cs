@@ -55,6 +55,17 @@ namespace CA1_MVC_X00180930.Models
             }
         }
 
+        //public Package(int iD, string clientName, string shippingAddress, double weight, double length, double width, double height, ShippingCategory shippingCategory)
+        //{
+        //    ID = iD;
+        //    ClientName = clientName;
+        //    ShippingAddress = shippingAddress;
+        //    Weight = weight;
+        //    Length = length;
+        //    Width = width;
+        //    Height = height;
+        //    ShippingCategory = shippingCategory;
+        //}
 
         public double Volume()
         {
@@ -66,7 +77,7 @@ namespace CA1_MVC_X00180930.Models
             double answer = Weight / Volume();
             return answer;
         }
-
+        
 
     }
 }
