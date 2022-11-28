@@ -7,17 +7,28 @@ namespace CA1_MVC_X00180930.Models
         [Required]
         public int ID { get; set; }
         [Required]
+        [StringLength(60)]
+        [Display(Name = "Client Name")]
         public string ClientName { get; set; } = "";
         [Required]
+        [StringLength (200,MinimumLength =6)]
+        [Display(Name = "Shipping Address")]
         public string ShippingAddress { get; set; } = "";
         [Required]
+        [Range(0.0, 100)]
+        [Display(Name = "Weight: KG")]
         public double Weight { get; set; }
         [Required]
-
+        [Range(0.0, 200)]
+        [Display(Name = "Length: CM")]
         public double Length { get; set; }
         [Required]
+        [Range(0.0, 200)]
+        [Display(Name = "Width: CM")]
         public double Width { get; set; }
         [Required]
+        [Range(0.0, 200)]
+        [Display(Name = "Height: CM")]
         public double Height { get; set; }
         [Required]
 
