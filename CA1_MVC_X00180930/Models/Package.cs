@@ -31,29 +31,32 @@ namespace CA1_MVC_X00180930.Models
         [Display(Name = "Height: CM")]
         public double Height { get; set; }
         [Required]
+        public ShippingCategory ShippingCategory { get; set; }
+        
+        //[Required]
 
-        public ShippingCategory ShippingCategory
-        {
-            get
-            {
-                return ShippingCategory;
-            }
-            set
-            {
-                if(Density()<1)
-                {
-                    ShippingCategory = ShippingCategory.Low;
-                }
-                if(Density()<100)
-                {
-                    ShippingCategory = ShippingCategory.Medium;
-                }
-                if(Density()>=100)
-                {
-                    ShippingCategory = ShippingCategory.High;
-                }
-            }
-        }
+        //public ShippingCategory ShippingCategory
+        //{
+        //    get
+        //    {
+        //        return ShippingCategory;
+        //    }
+        //    set
+        //    {
+        //        if(Density()<1)
+        //        {
+        //            ShippingCategory = ShippingCategory.Low;
+        //        }
+        //        if(Density()<100)
+        //        {
+        //            ShippingCategory = ShippingCategory.Medium;
+        //        }
+        //        if(Density()>=100)
+        //        {
+        //            ShippingCategory = ShippingCategory.High;
+        //        }
+        //    }
+        //}
 
         //public Package(int iD, string clientName, string shippingAddress, double weight, double length, double width, double height, ShippingCategory shippingCategory)
         //{

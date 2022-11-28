@@ -54,16 +54,30 @@ namespace CA1_MVC_X00180930.Controllers
         // GET: PackageController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var package = _packages.FirstOrDefault(p => p.ID == id);
+            return View(package);
         }
+
 
         // POST: PackageController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(Package p)
         {
             try
             {
+                var package = _packages.FirstOrDefault(f => f.ID == p.ID);
+                if (package != null)
+                {
+                    package.ClientName = p.ClientName;
+                    package.ShippingAddress = p.ShippingAddress;
+                    package.Weight = p.Weight;
+                    package.Length = p.Length;
+                    package.Width = p.Width;
+                    package.Height = p.Height;
+                }
+                //_repo.Edit(p); --> repo not set up yet
+
                 return RedirectToAction(nameof(Index));
             }
             catch
